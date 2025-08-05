@@ -238,204 +238,38 @@
             opacity: 0.1;
             z-index: -1;
         }
-
-        /* Обновленный стиль для прозрачной навигационной полосы */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 50;
-            background: rgba(27, 38, 59, 0.1); /* Прозрачный фон */
-            backdrop-filter: blur(10px); /* Эффект размытия */
-            border-bottom: 1px solid rgba(230, 57, 70, 0.2); /* Легкая граница */
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .navbar.scrolled {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.4);
-        }
-
-        .navbar-brand {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .navbar-brand img {
-            height: 2.5rem;
-            transition: transform 0.3s ease;
-        }
-
-        .navbar-brand .brand-text {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 900;
-            color: #fff;
-            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
-        }
-
-        .navbar-brand .brand-text .gradient-text {
-            background: linear-gradient(45deg, #FF6B6B, #F94144);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .navbar-nav {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        .nav-link {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 500;
-            color: #fff;
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #fff;
-            transition: width 0.3s ease;
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        .nav-link:hover {
-            color: #FFD700;
-            transform: translateY(-2px);
-            background: rgba(255, 255, 255, 0.1);
-            box-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
-        }
-
-        .nav-button {
-            background: linear-gradient(135deg, #FF6B6B, #F94144);
-            padding: 0.75rem 1.5rem;
-            border-radius: 20px;
-            font-weight: 600;
-            color: #fff;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .nav-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .nav-button:hover::before {
-            left: 100%;
-        }
-
-        .nav-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.5);
-        }
-
-        /* Медиа-запросы для мобильной версии */
-        @media (max-width: 768px) {
-            .navbar-nav {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: rgba(27, 38, 59, 0.9); /* Прозрачный фон для мобильного меню */
-                backdrop-filter: blur(10px);
-                padding: 1rem;
-                border-radius: 0 0 10px 10px;
-                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            }
-
-            .navbar-nav.active {
-                display: flex;
-            }
-
-            .nav-link {
-                padding: 0.75rem 1rem;
-                width: 100%;
-                text-align: center;
-            }
-
-            .nav-button {
-                width: 100%;
-                text-align: center;
-                margin-top: 0.5rem;
-            }
-
-            .navbar-toggle {
-                display: block;
-                font-size: 1.5rem;
-                color: #fff;
-                background: none;
-                border: none;
-                cursor: pointer;
-            }
-        }
-
-        @media (min-width: 769px) {
-            .navbar-toggle {
-                display: none;
-            }
-        }
     </style>
 </head>
 <body>
     <div class="noise-overlay"></div>
 
     <!-- Header -->
-    <header class="navbar">
-        <div class="navbar-brand">
-            <img src="images/logo.png" alt="Danq Upgrade Logo" class="h-12">
-            <span class="brand-text">Danq <span class="gradient-text">Upgrade</span></span>
+    <header class="fixed w-full z-40 bg-gradient-to-r from-red-900/95 to-red-800/95 backdrop-blur-lg border-b border-red-600/50 shadow-xl shadow-red-900/20">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="flex items-center space-x-3">
+                <img src="images/logo.png" alt="Danq Upgrade Logo" class="h-12">
+                <span class="text-2xl font-bold text-white">Danq <span class="gradient-text">Upgrade</span></span>
+            </a>
+            
+            <nav class="hidden md:flex space-x-10">
+                <a href="#hero" class="text-white hover:text-red-400 transition duration-300 font-medium text-lg">Главная</a>
+                <a href="#security" class="text-white hover:text-red-400 transition duration-300 font-medium text-lg">Безопасность</a>
+                <a href="#features" class="text-white hover:text-red-400 transition duration-300 font-medium text-lg">Функции</a>
+                <a href="#alpha" class="text-white hover:text-red-400 transition duration-300 font-medium text-lg">Alpha</a>
+                <a href="#faq" class="text-white hover:text-red-400 transition duration-300 font-medium text-lg">FAQ</a>
+            </nav>
+            
+            <div class="flex items-center space-x-4">
+                <a href="#download" class="hidden md:block btn-primary text-white px-6 py-2 font-medium text-lg">Скачать</a>
+                <button class="md:hidden text-white focus:outline-none">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
         </div>
-        
-        <nav class="navbar-nav">
-            <a href="#hero" class="nav-link">Главная</a>
-            <a href="#security" class="nav-link">Безопасность</a>
-            <a href="#features" class="nav-link">Функции</a>
-            <a href="#alpha" class="nav-link">Alpha</a>
-            <a href="#faq" class="nav-link">FAQ</a>
-            <a href="#download" class="nav-button">Скачать</a>
-        </nav>
-        
-        <button class="navbar-toggle md:hidden">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-            </svg>
-        </button>
     </header>
 
-    <!-- Остальной контент остается без изменений -->
     <!-- Hero Section -->
     <section id="hero" class="min-h-screen flex items-center justify-center relative pt-24">
         <div class="section-bg"></div>
@@ -782,4 +616,324 @@
             <div class="max-w-3xl mx-auto">
                 <div class="faq-item card rounded-xl mb-6 overflow-hidden">
                     <button class="faq-question w-full text-left p-6 flex justify-between items-center hover:bg-red-500/10 transition duration-300">
-                        <h3 class="text-lg font-semibold text-white">На какой версии Minecraft работает наш проект?</
+                        <h3 class="text-lg font-semibold text-white">На какой версии Minecraft работает наш проект?</h3>
+                        <svg class="w-6 h-6 text-red-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-answer px-6 pb-6 pt-0 text-gray-300 hidden">
+                        <p>1.16.5</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item card rounded-xl mb-6 overflow-hidden">
+                    <button class="faq-question w-full text-left p-6 flex justify-between items-center hover:bg-red-500/10 transition duration-300">
+                        <h3 class="text-lg font-semibold text-white">Могу ли я получить бан за использование Danq Upgrade?</h3>
+                        <svg class="w-6 h-6 text-red-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-answer px-6 pb-6 pt-0 text-gray-300 hidden">
+                        <p>Мы разработали клиент с учетом всех современных анти-чит систем, минимизируя риск обнаружения. Однако, как и при использовании любого стороннего ПО, существует определенный риск.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item card rounded-xl mb-6 overflow-hidden">
+                    <button class="faq-question w-full text-left p-6 flex justify-between items-center hover:bg-red-500/10 transition duration-300">
+                        <h3 class="text-lg font-semibold text-white">Как установить Danq Upgrade?</h3>
+                        <svg class="w-6 h-6 text-red-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-answer px-6 pb-6 pt-0 text-gray-300 hidden">
+                        <p>Скачайте архив, распакуйте его и переместите распакованную папку в папку versions.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item card rounded-xl mb-6 overflow-hidden">
+                    <button class="faq-question w-full text-left p-6 flex justify-between items-center hover:bg-red-500/10 transition duration-300">
+                        <h3 class="text-lg font-semibold text-white">Какие системные требования у клиента?</h3>
+                        <svg class="w-6 h-6 text-red-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-answer px-6 pb-6 pt-0 text-gray-300 hidden">
+                        <p>Системные требования аналогичны требованиям самого Minecraft. Если ваш компьютер запускает Minecraft, то он справится и с нашим клиентом.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item card rounded-xl mb-6 overflow-hidden">
+                    <button class="faq-question w-full text-left p-6 flex justify-between items-center hover:bg-red-500/10 transition duration-300">
+                        <h3 class="text-lg font-semibold text-white">Как получить доступ к Alpha версии?</h3>
+                        <svg class="w-6 h-6 text-red-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-answer px-6 pb-6 pt-0 text-gray-300 hidden">
+                        <p>Alpha версия доступна для покупки на нашем сайте. После оплаты вы получите доступ к закрытому разделу с загрузками и инструкциями.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="py-24 relative">
+        <div class="section-bg"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold text-white mb-4">Скачать Danq Upgrade</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-red-500 to-red-400 mx-auto"></div>
+            </div>
+            
+            <div class="max-w-2xl mx-auto card rounded-xl p-8 shadow-2xl">
+                <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+                    <div class="mb-6 md:mb-0">
+                        <p class="text-gray-300 mb-2">Версия: <span class="text-white font-semibold">Upgrade</span></p>
+                        <p class="text-gray-300 mb-2">Дата обновления: <span class="text-white font-semibold">20.05.2025</span></p>
+                        <p class="text-gray-300">Размер файла: <span class="text-white font-semibold">78.5 МБ</span></p>
+                    </div>
+                    
+                    <a href="downloads/Danq_Upgrade.rar" class="btn-primary text-white px-10 py-4 font-bold flex items-center space-x-3 transform hover:scale-105 transition-all duration-300" download>
+                        <span>Скачать сейчас</span>
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                        </svg>
+                    </a>
+                </div>
+                
+                <p class="text-center text-gray-300 text-sm">Нажимая кнопку "Скачать", вы соглашаетесь с нашими условиями использования.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-br from-red-900/95 to-black py-12 border-t border-red-900/50">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <img src="images/logo.png" alt="Danq Upgrade Logo" class="h-10">
+                        <span class="text-xl font-bold text-white">Danq <span class="gradient-text">Upgrade</span></span>
+                    </div>
+                    <p class="text-gray-300">Революция в игровом процессе Minecraft</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-4">Документация</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-300 hover:text-red-400 transition duration-300">Условия использования</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-red-400 transition duration-300">Политика конфиденциальности</a></li>
+                        <li><a href="#faq" class="text-gray-300 hover:text-red-400 transition duration-300">Часто задаваемые вопросы</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-4">Сообщество</h4>
+                    <div class="flex space-x-4">
+                        <a href="https://t.me/danqupd" class="w-12 h-12 bg-red-500/10 rounded-full flex items-center justify-center text-red-400 hover:bg-red-500/20 transition duration-300" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-telegram text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-4">Подписаться на обновления</h4>
+                    <div class="flex">
+                        <input type="email" placeholder="Ваш email" class="bg-red-500/10 text-white px-5 py-3 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-red-400 w-full">
+                        <button type="submit" class="bg-red-500 text-white px-5 py-3 rounded-r-lg hover:bg-red-600 transition duration-300">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-red-900/50 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <div class="text-gray-300 mb-4 md:mb-0">© 2025 Danq Upgrade. Все права защищены.</div>
+                
+                <div class="flex items-center space-x-6">
+                    <a href="#hero" class="text-gray-300 hover:text-red-400 transition duration-300 flex items-center">
+                        <span class="mr-2">Наверх</span>
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Alpha Version Modal -->
+    <div id="alphaModal" class="modal fixed inset-0 z-50 flex items-center justify-center opacity-0 invisible transition-all duration-300">
+        <div class="modal-overlay absolute inset-0"></div>
+        
+        <div class="modal-content relative card rounded-xl max-w-2xl w-full mx-4 shadow-2xl">
+            <button id="closeAlphaModal" class="absolute top-4 right-4 text-gray-300 hover:text-red-400 transition duration-300">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            
+            <div class="p-8">
+                <div class="flex items-center mb-6">
+                    <div class="w-12 h-12 bg-red-500/20 rounded-full flex items-center justify-center text-red-400 mr-4">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h2 class="text-3xl font-bold text-white">Alpha <span class="gradient-text">Доступ</span></h2>
+                </div>
+                
+                <div class="mb-8">
+                    <p class="text-gray-200 mb-6">Получите эксклюзивный доступ к Alpha версии нашего клиента с уникальными возможностями:</p>
+                    
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-green-400 mt-1 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-200">Ранние версии чита</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-green-400 mt-1 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-200">Экспериментальные функции и тесты</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-green-400 mt-1 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-200">Возможность кидать баги и предлагать идеи</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-green-400 mt-1 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-200">Приватные конфиги под различные сервера</span>
+                        </li>
+                    </ul>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                        <div class="pricing-card rounded-lg p-6 shadow-2xl">
+                            <h3 class="text-lg font-bold text-white mb-3">1 месяц</h3>
+                            <p class="text-3xl font-bold text-white mb-4">$9.99</p>
+                            <button class="w-full btn-primary text-white py-3 rounded-lg">Выбрать</button>
+                        </div>
+                        
+                        <div class="pricing-card rounded-lg p-6 popular shadow-2xl">
+                            <div class="popular-badge">Выгодно</div>
+                            <h3 class="text-lg font-bold text-white mb-3">3 месяца</h3>
+                            <p class="text-3xl font-bold text-white mb-4">$24.99</p>
+                            <p class="text-green-400 text-sm mb-4">Экономия $5</p>
+                            <button class="w-full btn-primary text-white py-3 rounded-lg">Выбрать</button>
+                        </div>
+                        
+                        <div class="pricing-card rounded-lg p-6 shadow-2xl">
+                            <h3 class="text-lg font-bold text-white mb-3">6 месяцев</h3>
+                            <p class="text-3xl font-bold text-white mb-4">$44.99</p>
+                            <p class="text-green-400 text-sm mb-4">Экономия $15</p>
+                            <button class="w-full btn-primary text-white py-3 rounded-lg">Выбрать</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-red-500/10 rounded-lg p-5">
+                    <p class="text-gray-300 text-sm">После оплаты вы получите письмо с инструкциями по активации Alpha доступа. Если у вас возникнут вопросы, свяжитесь с нами через Telegram.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Counter animation
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200;
+        
+        counters.forEach(counter => {
+            const updateCount = () => {
+                const target = +counter.getAttribute('data-count');
+                const count = +counter.innerText.replace('+', '');
+                const increment = target / speed;
+                
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + increment) + '+';
+                    setTimeout(updateCount, 1);
+                } else {
+                    counter.innerText = target + '+';
+                }
+            };
+            
+            updateCount();
+        });
+        
+        // FAQ accordion
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const icon = question.querySelector('svg');
+                
+                answer.classList.toggle('hidden');
+                icon.classList.toggle('rotate-180');
+                
+                faqQuestions.forEach(q => {
+                    if (q !== question) {
+                        q.nextElementSibling.classList.add('hidden');
+                        q.querySelector('svg').classList.remove('rotate-180');
+                    }
+                });
+            });
+        });
+        
+        // Alpha modal
+        const alphaModal = document.getElementById('alphaModal');
+        const openAlphaModal = document.getElementById('openAlphaModal');
+        const closeAlphaModal = document.getElementById('closeAlphaModal');
+        
+        openAlphaModal.addEventListener('click', () => {
+            alphaModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        closeAlphaModal.addEventListener('click', () => {
+            alphaModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+        
+        alphaModal.addEventListener('click', (e) => {
+            if (e.target === alphaModal) {
+                alphaModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Mobile menu toggle (placeholder)
+        const mobileMenuButton = document.querySelector('.md\\:hidden');
+        mobileMenuButton.addEventListener('click', () => {
+            alert('Мобильное меню будет реализовано в будущем');
+        });
+    </script>
+</body>
+</html>
