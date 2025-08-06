@@ -238,30 +238,57 @@
             opacity: 0.1;
             z-index: -1;
         }
+        
+        .payment-methods {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        
+        .payment-btn {
+            flex: 1;
+            margin: 0 5px;
+            padding: 10px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(230, 57, 70, 0.3);
+        }
+        
+        .payment-btn:hover {
+            background: rgba(230, 57, 70, 0.2);
+            transform: translateY(-3px);
+        }
+        
+        .payment-icon {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
     </style>
 </head>
 <body>
     <div class="noise-overlay"></div>
 
-    <!-- Header -->
-    <header class="fixed w-full z-40 bg-gradient-to-r from-red-900/95 to-red-800/95 backdrop-blur-lg border-b border-red-600/50 shadow-xl shadow-red-900/20">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="flex items-center space-x-3">
-                <img src="images/logo.png" alt="Danq Upgrade Logo" class="h-12">
-                <span class="text-2xl font-bold text-white">Danq <span class="gradient-text">Upgrade</span></span>
+    <!-- Header с прозрачностью -->
+    <header class="fixed w-full z-40 bg-gray-900/50 backdrop-blur-md border-b border-red-600/30 shadow-lg shadow-red-900/15 rounded-full mx-4 mt-4 transition-all duration-300 hover:shadow-xl">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#" class="flex items-center space-x-4 hover:opacity-90 transition-opacity duration-300">
+                <img src="images/logo.png" alt="Danq Upgrade Logo" class="h-10 transform hover:scale-105 transition-transform duration-300">
+                <span class="text-2xl md:text-3xl font-bold text-white tracking-wide">Danq <span class="gradient-text">Upgrade</span></span>
             </a>
-            
-            <nav class="hidden md:flex space-x-10">
-                <a href="#hero" class="text-white hover:text-red-400 transition duration-300 font-medium text-lg">Главная</a>
-                <a href="#security" class="text-white hover:text-red-400 transition duration-300 font-medium text-lg">Безопасность</a>
-                <a href="#features" class="text-white hover:text-red-400 transition duration-300 font-medium text-lg">Функции</a>
-                <a href="#alpha" class="text-white hover:text-red-400 transition duration-300 font-medium text-lg">Alpha</a>
-                <a href="#faq" class="text-white hover:text-red-400 transition duration-300 font-medium text-lg">FAQ</a>
+
+            <nav class="hidden md:flex space-x-2">
+                <a href="#hero" class="text-white/90 hover:text-red-300 transition-all duration-300 font-medium text-lg py-2 px-4 rounded-full hover:bg-red-900/30">Главная</a>
+                <a href="#security" class="text-white/90 hover:text-red-300 transition-all duration-300 font-medium text-lg py-2 px-4 rounded-full hover:bg-red-900/30">Безопасность</a>
+                <a href="#features" class="text-white/90 hover:text-red-300 transition-all duration-300 font-medium text-lg py-2 px-4 rounded-full hover:bg-red-900/30">Функции</a>
+                <a href="#alpha" class="text-white/90 hover:text-red-300 transition-all duration-300 font-medium text-lg py-2 px-4 rounded-full hover:bg-red-900/30">Alpha</a>
+                <a href="#faq" class="text-white/90 hover:text-red-300 transition-all duration-300 font-medium text-lg py-2 px-4 rounded-full hover:bg-red-900/30">FAQ</a>
             </nav>
-            
+
             <div class="flex items-center space-x-4">
-                <a href="#download" class="hidden md:block btn-primary text-white px-6 py-2 font-medium text-lg">Скачать</a>
-                <button class="md:hidden text-white focus:outline-none">
+                <a href="#download" class="hidden md:block bg-gradient-to-r from-red-600 to-red-700 text-white px-6 py-2 font-medium text-lg rounded-full shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 hover:bg-gradient-to-r hover:from-red-500 hover:to-red-600">Скачать</a>
+                <button class="md:hidden text-white focus:outline-none hover:text-red-300 transition-colors duration-300">
                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
@@ -694,7 +721,8 @@
                         <p class="text-gray-300">Размер файла: <span class="text-white font-semibold">78.5 МБ</span></p>
                     </div>
                     
-                    <a href="downloads/Danq_Upgrade.rar" class="btn-primary text-white px-10 py-4 font-bold flex items-center space-x-3 transform hover:scale-105 transition-all duration-300" download>
+                    <!-- Обновленная кнопка скачивания с переходом по ссылке -->
+                    <a href="https://example.com/download" class="btn-primary text-white px-10 py-4 font-bold flex items-center space-x-3 transform hover:scale-105 transition-all duration-300">
                         <span>Скачать сейчас</span>
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
@@ -707,10 +735,10 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-gradient-to-br from-red-900/95 to-black py-12 border-t border-red-900/50">
+    <!-- Footer с обновленным оформлением -->
+    <footer class="bg-gray-900/50 backdrop-blur-md border-t border-red-600/30 py-12">
         <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
                 <div>
                     <div class="flex items-center space-x-3 mb-4">
                         <img src="images/logo.png" alt="Danq Upgrade Logo" class="h-10">
@@ -736,18 +764,6 @@
                         </a>
                     </div>
                 </div>
-                
-                <div>
-                    <h4 class="text-lg font-bold text-white mb-4">Подписаться на обновления</h4>
-                    <div class="flex">
-                        <input type="email" placeholder="Ваш email" class="bg-red-500/10 text-white px-5 py-3 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-red-400 w-full">
-                        <button type="submit" class="bg-red-500 text-white px-5 py-3 rounded-r-lg hover:bg-red-600 transition duration-300">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
             </div>
             
             <div class="border-t border-red-900/50 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
@@ -765,7 +781,7 @@
         </div>
     </footer>
 
-    <!-- Alpha Version Modal -->
+    <!-- Alpha Version Modal с обновленными платежными методами -->
     <div id="alphaModal" class="modal fixed inset-0 z-50 flex items-center justify-center opacity-0 invisible transition-all duration-300">
         <div class="modal-overlay absolute inset-0"></div>
         
@@ -816,27 +832,44 @@
                         </li>
                     </ul>
                     
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                        <div class="pricing-card rounded-lg p-6 shadow-2xl">
-                            <h3 class="text-lg font-bold text-white mb-3">1 месяц</h3>
-                            <p class="text-3xl font-bold text-white mb-4">$9.99</p>
-                            <button class="w-full btn-primary text-white py-3 rounded-lg">Выбрать</button>
-                        </div>
                         
+                      
+                        
+                        <!-- Новая опция: навсегда -->
                         <div class="pricing-card rounded-lg p-6 popular shadow-2xl">
-                            <div class="popular-badge">Выгодно</div>
-                            <h3 class="text-lg font-bold text-white mb-3">3 месяца</h3>
-                            <p class="text-3xl font-bold text-white mb-4">$24.99</p>
-                            <p class="text-green-400 text-sm mb-4">Экономия $5</p>
+                            <div class="popular-badge">Лучшее</div>
+                            <h3 class="text-lg font-bold text-white mb-3">Навсегда</h3>
+                            <div class="flex items-baseline">
+                                <p class="text-3xl font-bold text-white mb-4">₽50</p>
+                                <p class="text-gray-400 line-through text-sm ml-2">₽90</p>
+                            </div>
+                            <p class="text-green-400 text-sm mb-4">Экономия ₽40</p>
                             <button class="w-full btn-primary text-white py-3 rounded-lg">Выбрать</button>
                         </div>
+                    </div>
+                    
+                    <!-- Добавленные способы оплаты -->
+                    <div class="payment-methods">
+                        <a href="https://funpay.com/example" target="_blank" class="payment-btn">
+                            <div class="payment-icon">
+                                <i class="fas fa-coins"></i>
+                            </div>
+                            <div class="text-sm">FunPay</div>
+                        </a>
                         
-                        <div class="pricing-card rounded-lg p-6 shadow-2xl">
-                            <h3 class="text-lg font-bold text-white mb-3">6 месяцев</h3>
-                            <p class="text-3xl font-bold text-white mb-4">$44.99</p>
-                            <p class="text-green-400 text-sm mb-4">Экономия $15</p>
-                            <button class="w-full btn-primary text-white py-3 rounded-lg">Выбрать</button>
-                        </div>
+                        <a href="https://ukrcard.example" target="_blank" class="payment-btn">
+                            <div class="payment-icon">
+                                <i class="fas fa-credit-card"></i>
+                            </div>
+                            <div class="text-sm">Укр карты</div>
+                        </a>
+                        
+                        <a href="https://cryptobot.example" target="_blank" class="payment-btn">
+                            <div class="payment-icon">
+                                <i class="fab fa-bitcoin"></i>
+                            </div>
+                            <div class="text-sm">CryptoBot</div>
+                        </a>
                     </div>
                 </div>
                 
