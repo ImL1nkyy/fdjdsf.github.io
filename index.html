@@ -265,6 +265,35 @@
             font-size: 24px;
             margin-bottom: 5px;
         }
+
+        .download-card {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(230, 57, 70, 0.25);
+            border-color: var(--primary);
+        }
+
+        .download-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .download-card:hover::after {
+            opacity: 0.1;
+        }
     </style>
 </head>
 <body>
@@ -699,7 +728,7 @@
                         </svg>
                     </button>
                     <div class="faq-answer px-6 pb-6 pt-0 text-gray-300 hidden">
-                        <p>Скачайте архив, распакуйте его и переместите распакованную папку в папку versions.</p>
+                        <p>Установите версию, распакуйте и переместите распакованную папку в папку versions, либо же установите лоадер и просто откройте, далее лоадер установит все сам.</p>
                     </div>
                 </div>
                 
@@ -736,27 +765,130 @@
         <div class="container mx-auto px-6 relative z-10">
             <div class="text-center mb-16">
                 <h2 class="text-5xl font-bold text-white mb-4">Скачать Danq Upgrade</h2>
+                <p class="text-xl text-gray-300 mb-10">Выберите удобный вариант установки</p>
                 <div class="w-24 h-1 bg-gradient-to-r from-red-500 to-red-400 mx-auto"></div>
             </div>
             
-            <div class="max-w-2xl mx-auto card rounded-xl p-8 shadow-2xl">
-                <div class="flex flex-col md:flex-row justify-between items-center mb-8">
-                    <div class="mb-6 md:mb-0">
-                        <p class="text-gray-300 mb-2">Версия: <span class="text-white font-semibold">Upgrade 0.3</span></p>
-                        <p class="text-gray-300 mb-2">Дата обновления: <span class="text-white font-semibold">9.08.2025</span></p>
-                        <p class="text-gray-300">Размер файла: <span class="text-white font-semibold">80.5 МБ</span></p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto">
+                <!-- Версия (традиционная установка) -->
+                <div class="download-card card rounded-xl p-8 shadow-2xl">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-red-500/20 rounded-full flex items-center justify-center text-red-400 mr-4">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">Версия</h3>
                     </div>
                     
-                    <!-- Обновленная кнопка скачивания с переходом по ссылке -->
-                    <a href="https://drive.usercontent.google.com/download?id=1VP3DtMtIxntDUGk-QsF1iRSXfH4uzrO_&export=download&authuser=0&confirm=t&uuid=6749816e-57a1-4993-a770-3405b8741e53&at=AN8xHoo3MGlyqFg6uVx2Q898F-Es%3A1754584446123" class="btn-primary text-white px-10 py-4 font-bold flex items-center space-x-3 transform hover:scale-105 transition-all duration-300">
-                        <span>Скачать сейчас</span>
+                    <div class="mb-6">
+                        <p class="text-gray-300 mb-4">Традиционный способ установки. Скачайте архив, распакуйте его и переместите в папку versions.</p>
+                        <ul class="space-y-2 text-gray-300 mb-6">
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-red-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>Полная версия клиента</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-red-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>Ручная установка</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-red-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>Подходит опытным пользователям</span>
+                            </li>
+                        </ul>
+                        
+                        <div class="flex items-center text-gray-300 mb-4">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                            <span>Версия: <span class="text-white font-semibold">Upgrade 0.3</span></span>
+                        </div>
+                        
+                        <div class="flex items-center text-gray-300">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path>
+                            </svg>
+                            <span>Размер: <span class="text-white font-semibold">80.5 МБ</span></span>
+                        </div>
+                    </div>
+                    
+                    <a href="http://e2.aurorix.net:25805/DanqUpgrade0.3.zip" class="btn-primary text-white w-full py-3 font-medium flex items-center justify-center space-x-3">
+                        <span>Скачать Версию</span>
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
                         </svg>
                     </a>
                 </div>
                 
-                <p class="text-center text-gray-300 text-sm">Нажимая кнопку "Скачать", вы соглашаетесь с нашими условиями использования.</p>
+                <!-- Лоадер (новый лаунчер) -->
+                <div class="download-card card rounded-xl p-8 shadow-2xl relative">
+                    <span class="absolute top-4 right-4 bg-green-500/20 text-green-300 px-3 py-1 rounded-full text-xs font-semibold">NEW</span>
+                    
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-red-500/20 rounded-full flex items-center justify-center text-red-400 mr-4">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">Лоадер</h3>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <p class="text-gray-300 mb-4">Наш новый лаунчер для чит-клиента. Удобный и быстрый запуск, автоматические обновления и автоустановка.</p>
+                        <ul class="space-y-2 text-gray-300 mb-6">
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-red-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>Простая установка в один клик</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-red-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>Автоматические обновления</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-red-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>Удобные настройки</span>
+                            </li>
+                        </ul>
+                        
+                        <div class="flex items-center text-gray-300 mb-4">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                            <span>Версия: <span class="text-white font-semibold">Loader 0.1</span></span>
+                        </div>
+                        
+                        <div class="flex items-center text-gray-300">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path>
+                            </svg>
+                            <span>Размер: <span class="text-white font-semibold">73.3 МБ</span></span>
+                        </div>
+                    </div>
+                    
+                    <a href="http://e2.aurorix.net:25805/DanqLoader.exe" class="btn-primary text-white w-full py-3 font-medium flex items-center justify-center space-x-3">
+                        <span>Скачать Лоадер</span>
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <p class="text-gray-300 text-sm">Нажимая кнопку "Скачать", вы соглашаетесь с нашими условиями использования.</p>
             </div>
         </div>
     </section>
